@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(238, 238, 118);
+}
+
+img {
+    width: 180px;
+    height: 180px;
+}
+
+#header {
+    background-color: rgb(238, 238, 118);
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+li,
+#new-burger {
+    font-size: 18px;
+    line-height: 40px;
+}

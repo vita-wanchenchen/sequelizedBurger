@@ -1,0 +1,70 @@
+<div class="container text-monospace">
+  <div class="jumbotron" id="header">
+  <div class="row justify-content-center">
+    <img src="https://freeiconshop.com/wp-content/uploads/edd/burger-outline-filled.png" alt="burger-background">
+  </div>
+
+  <div class="row justify-content-center">
+
+    <h1>Eat-Da-Burger!</h1>
+
+  </div>
+  </div>
+  <div class="row justify-content-center mb-3">
+
+    <div class="col-sm-4">
+      <h2 class="text-center">Burgers to Eat!</h2>
+
+        <ul>
+          {{#each burgers}}
+            {{#unless this.devoured}}
+              <li class="text-capitalize">
+			          {{this.id}}
+			          {{this.burger_name}}
+    
+			          <button value="{{this.id}}" class="btn btn-warning text-white devour">
+                  <strong>Devour It!</strong>
+                </button>
+              </li>
+		  
+            {{/unless}}
+          {{/each}}
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Burgers Ate!</h2>
+
+        {{#each burgers}}
+		    {{#if this.devoured}}
+
+			  <li class="text-capitalize">
+			    {{this.id}}
+			    {{this.burger_name}}
+
+			  </li>
+		    {{/if}}
+	      {{/each}}
+    </div>
+
+  </div>
+
+<div class="row justify-content-center">
+  <h2>Add a Burger</h2>
+</div>
+
+
+<form action="/api/burgers" method="POST" class="create-form">
+  <div class="row justify-content-center">
+    <div class="form-group">
+      <label id="new-burger" for="new-burger">Burger Name:</label>
+      <input type="text" id="new-burger" name="burger_name">
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <button class="btn btn-warning text-white" type="submit" id="submit"><strong>Make this Burger</strong></button>
+  </div>    
+</form>
+
+</div>
