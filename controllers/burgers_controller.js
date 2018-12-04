@@ -17,6 +17,7 @@ router.get("/", function(req, res) {
     });
 });
 
+// Create new burger
 router.post("/api/burgers", function(req,res) {
     db.Burger.create({
         burger_name: req.body.burger_name
@@ -26,20 +27,22 @@ router.post("/api/burgers", function(req,res) {
     });
 });
 
+// Devoured the burger created
 router.put("/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
 
-    /*burger.update({
-        devoured: req.body.devoured
-    }, condition, function(result) {
-        if (result.changedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    db.Burger.update({
+        devoured: true
+    }, {
+        where: {
+            id: req.params.id
         }
-    });*/
+    }).then(function(data){
+        res.json(data);
+    });
+
 });
 
 // Export routes for server.js to use.
